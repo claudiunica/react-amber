@@ -73,7 +73,7 @@ class NewUser extends React.Component {
                 <Select
                   labelId="demo-simple-select-required-label"
                   id="demo-simple-select-required"
-                  // value={age}
+                  value={this.state.user_role_id}
                   onChange={this.handleChange}
                 // className={classes.selectEmpty}
                 >
