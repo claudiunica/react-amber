@@ -9,7 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
+import Login from './Login';
 const style = {
   margin: 15,
 }
@@ -124,6 +124,7 @@ class NewUser extends React.Component {
   handleClick = (event) => {
     console.log(this)
     const apiUrl = 'http://localhost:3003';
+    var self = this;
     axios.post(`${apiUrl}/users/register`, {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
@@ -133,7 +134,19 @@ class NewUser extends React.Component {
     }, {
         headers: { 'Authorization': "bearer " + localStorage.getItem('token') }
       }
-    )
+    ).then(response => {
+      console.log(this);
+      let loginScreen = [];
+      loginScreen.push(<Login parentContext={this} />);
+      self.props.parentContext.setState({
+        loginScreen: loginScreen,
+        loginMessage: "Go to login",
+        buttonLabel: "Register",
+        isLogin: true
+      })
+    }).catch(error => {
+      console.log(error);
+    })
   }
 
 

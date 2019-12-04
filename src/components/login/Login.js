@@ -4,7 +4,8 @@ import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-
+import App from '../../App'
+import Resource from '../resources/Resource';
 const style = {
     margin: 15,
 }
@@ -56,17 +57,17 @@ class Login extends React.Component {
             "email": this.state.username,
             "password": this.state.password
         }
+        var self = this;
 
         console.log(event);
         axios.post(`${apiUrl}/users/login`, payload).then(response => {
             console.log('Login successfull !', response);
             localStorage.setItem('email', response.data.email)
             localStorage.setItem('token', response.data.token);
-            // let uploadScreen = [];
-            // uploadScreen.push(1);
-            // this.props.appContext.setState({
-            //     loginPage: [], uploadScreen
-            // })
+            let uploadScreen = [];
+            console.log(this);
+            uploadScreen.push(<Resource appContext={self.props.appContext} />);
+            self.props.appContext.setState({ loginPage: [], uploadScreen: uploadScreen });
         }).catch(error => {
             console.log(error);
         })

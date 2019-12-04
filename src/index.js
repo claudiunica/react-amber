@@ -5,8 +5,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Login from './components/login/Login';
 import NewUser from './components/login/NewUser';
+import LoginScreen from './components/login/LoginScreen';
+import Resource from './components/resources/Resource';
 
-ReactDOM.render(<NewUser />, document.getElementById('root'));
+ReactDOM.render(<Resource />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

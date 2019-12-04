@@ -1,0 +1,5 @@
+.modal{
+    top: 50px;
+    left: 50px;
+    /* transform: `translate(-$50, -${left}%)`, */
+}
